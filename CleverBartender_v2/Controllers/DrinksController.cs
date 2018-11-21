@@ -21,6 +21,17 @@ namespace CleverBartender_v2.Controllers
         // GET: Drinks
         public async Task<IActionResult> Index()
         {
+            var mobile = _context.MobileNodes.ToArray();
+
+            List<SelectListItem> items = new List<SelectListItem>();
+
+            foreach (MobileNode device in mobile)
+            {
+                items.Add(new SelectListItem { Text = device.Name, Value = device.IpAddress });
+            }
+
+            ViewBag.DeviceType = items;
+
             return View(await _context.Drinks.ToListAsync());
         }
 

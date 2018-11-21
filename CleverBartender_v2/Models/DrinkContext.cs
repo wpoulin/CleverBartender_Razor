@@ -12,5 +12,7 @@ namespace CleverBartender_v2.Models
         public DbSet<Drink> Drinks { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
+
+        public DbSet<MobileNode> MobileNodes { get; set; }
     }
 }

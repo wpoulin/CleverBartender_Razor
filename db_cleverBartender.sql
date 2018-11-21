@@ -23,6 +23,13 @@ CREATE TABLE recipes (
     FOREIGN KEY (IngredientId) REFERENCES ingredients(Id)
 );
 
+CREATE TABLE mobileNodes (
+    Id int NOT NULL AUTO_INCREMENT,
+    Name Varchar(255) NOT NULL,
+    IpAddress Varchar(255) NOT NULL,
+    PRIMARY KEY (Id)
+);
+
 INSERT INTO drinks (Name) VALUES ('Jagger Bomb');
 INSERT INTO drinks (Name) VALUES ('Dark n Stormy');
 INSERT INTO drinks (Name) VALUES ('Rum n Coke');
@@ -39,3 +46,5 @@ INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (2, 2, 1);
 INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (2, 4, 3);
 INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (1, 2, 2);
 INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (2, 3, 4);
+
+INSERT INTO mobileNodes (Name, IpAddress) VALUES ('Noeud Mobile 1','127.0.0.1');
