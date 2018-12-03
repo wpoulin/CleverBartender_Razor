@@ -11,7 +11,8 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @*@Html.DisplayNameFor(model => model.Name)*@
+            Name of the drink
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Name)
@@ -20,11 +21,13 @@
 </div>
 
 <div>
-<h5>Liste des Ingredients</h5>
-@foreach (var item in ViewData["recipe"] as List<Ingredient>)
-{
-    @item.Name<br>
-}
+    @*<h4>Ingredients and Quantities</h4>*@
+    @foreach (var item in ViewData["recipe"] as List<OrderDrink>)
+    {
+        <h4>@item.Name</h4>
+        @item.Quantity<text>oz</text><br>
+        <text>Pump number :</text> @item.PumpNumber <br>
+    }
 </div>
 
 <div>

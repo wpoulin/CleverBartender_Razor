@@ -47,16 +47,25 @@ namespace CleverBartender_v2.Controllers
             var recipe = await _context.Recipes.Where(t =>t.DrinkId == id).ToListAsync();
             var recipeIdList = recipe.Select(c => c.IngredientId).ToList();
 
-            List<Ingredient> ingredientRecipe = new List<Ingredient>();
+            List<OrderDrink> OrderList = new List<OrderDrink>();
+            int iteration = 0;
 
             foreach (int ids in recipeIdList)
             {
+                var orderDrink = new OrderDrink();
                 var ingredient = _context.Ingredients.Where(e => e.Id == ids);
-                ingredientRecipe.Add(ingredient.First());
+                orderDrink.Name = ingredient.First().Name;
+                orderDrink.PumpNumber = ingredient.First().PumpNumber;
+
+                var quantity = recipe.Skip(iteration).Take(1);
+                orderDrink.Quantity = quantity.First().Quantity;
+
+                OrderList.Add(orderDrink);
+                iteration++;
             }
 
 
-            ViewData["recipe"] = ingredientRecipe;
+            ViewData["recipe"] = OrderList;
 
             if (drink == null)
             {

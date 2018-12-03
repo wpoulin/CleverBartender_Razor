@@ -10,6 +10,7 @@ CREATE TABLE drinks (
 CREATE TABLE ingredients (
     Id int NOT NULL AUTO_INCREMENT,
     Name Varchar(255) NOT NULL,
+    PumpNumber int,
     PRIMARY KEY (Id)
 );
 
@@ -34,17 +35,18 @@ INSERT INTO drinks (Name) VALUES ('Jagger Bomb');
 INSERT INTO drinks (Name) VALUES ('Dark n Stormy');
 INSERT INTO drinks (Name) VALUES ('Rum n Coke');
 
-INSERT INTO ingredients (Name) VALUES ('Jagermeister');
-INSERT INTO ingredients (Name) VALUES ('Rhum');
-INSERT INTO ingredients (Name) VALUES ('Coke');
-INSERT INTO ingredients (Name) VALUES ('Biere de gingembre');
-INSERT INTO ingredients (Name) VALUES ('Redbull');
+INSERT INTO ingredients (Name, PumpNumber) VALUES ('Jagermeister', 1);
+INSERT INTO ingredients (Name, PumpNumber) VALUES ('Rhum', 2);
+INSERT INTO ingredients (Name, PumpNumber) VALUES ('Coke', 3);
+INSERT INTO ingredients (Name, PumpNumber) VALUES ('Biere de gingembre', 4);
+INSERT INTO ingredients (Name, PumpNumber) VALUES ('Redbull', 5);
 
 INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (1, 1, 1);
 INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (1, 5, 1);
+INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (1, 2, 2);
+
 INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (2, 2, 1);
 INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (2, 4, 3);
-INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (1, 2, 2);
 INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (2, 3, 4);
 
 INSERT INTO mobileNodes (Name, IpAddress) VALUES ('Noeud Mobile 1','127.0.0.1');
