@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CleverBartender_v2.Models;
+using System.Text;
 
 namespace CleverBartender_v2.Controllers
 {
@@ -31,6 +32,9 @@ namespace CleverBartender_v2.Controllers
             }
 
             ViewBag.DeviceType = items;
+
+
+            ViewData["test"] = GlobalVariables.socketStarted;
 
             return View(await _context.Drinks.ToListAsync());
         }
@@ -71,6 +75,9 @@ namespace CleverBartender_v2.Controllers
             {
                 return NotFound();
             }
+
+            SocketBuildMessage(OrderList,1);
+            //SocketSendData();
 
             return View(drink);
         }
@@ -180,6 +187,42 @@ namespace CleverBartender_v2.Controllers
         private bool DrinkExists(int id)
         {
             return _context.Drinks.Any(e => e.Id == id);
+        }
+
+        private void SocketBuildMessage(List<OrderDrink> orderList, int noeudFixe)
+        {
+            int noeud = noeudFixe;
+
+            int[] qty = new int[4];
+
+
+            foreach (var ingredient in orderList)
+            {
+                qty[ingredient.PumpNumber-1] = ingredient.Quantity;
+            }
+
+            SocketSendData(noeudFixe,qty[0], qty[1], qty[2], qty[3]);
+        }
+
+        private void SocketSendData(int Noeud, int qty1, int qty2, int qty3, int qty4)
+        {
+            //Byte[] response2 = Encoding.UTF8.GetBytes("test");
+            Byte[] response2 = new byte[3];
+            //int qty1 = 6, qty2 = 0, qty3 = 0, qty4 = 0;
+
+            response2[0] = (Byte) (0x01); // Choix du mbed
+            response2[0] = (Byte)(0xFF & Noeud); // Choix du mbed
+            response2[1] = (Byte) ((0xF0 & (qty1 << 4)) | (0x0F & qty2)); // 4 bits pour qty1 et 4 bits pour qty2
+            response2[2] = (Byte) ((0xF0 & (qty3 << 4)) | (0x0F & qty4)); // 4 bits pour qty3 et 4 bits pour qty4
+            
+
+            //Byte[] test = new Byte[] { bytesM[0], bytesM[1], bytesM[2], bytesM[3], bytesM[4], bytesM[5] };
+            Byte[] test = new Byte[] { 129, (byte)(128 + response2.Length), 0, 0, 0, 0 };
+            Byte[] test2 = new Byte[test.Length + response2.Length];
+            System.Buffer.BlockCopy(test, 0, test2, 0, test.Length);
+            System.Buffer.BlockCopy(response2, 0, test2, test.Length, response2.Length);
+
+            GlobalVariables.stream.Write(test2, 0, test2.Length);
         }
     }
 }

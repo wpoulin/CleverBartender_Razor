@@ -31,22 +31,25 @@ CREATE TABLE mobileNodes (
     PRIMARY KEY (Id)
 );
 
-INSERT INTO drinks (Name) VALUES ('Jagger Bomb');
-INSERT INTO drinks (Name) VALUES ('Dark n Stormy');
-INSERT INTO drinks (Name) VALUES ('Rum n Coke');
+INSERT INTO drinks (Name) VALUES ('Rhum n coke');
+INSERT INTO drinks (Name) VALUES ('Rhum n 7up');
+INSERT INTO drinks (Name) VALUES ('Jus de raisin');
 
-INSERT INTO ingredients (Name, PumpNumber) VALUES ('Jagermeister', 1);
-INSERT INTO ingredients (Name, PumpNumber) VALUES ('Rhum', 2);
-INSERT INTO ingredients (Name, PumpNumber) VALUES ('Coke', 3);
-INSERT INTO ingredients (Name, PumpNumber) VALUES ('Biere de gingembre', 4);
-INSERT INTO ingredients (Name, PumpNumber) VALUES ('Redbull', 5);
+INSERT INTO ingredients (Name, PumpNumber) VALUES ('Rhum', 1);
+INSERT INTO ingredients (Name, PumpNumber) VALUES ('Coke', 2);
+INSERT INTO ingredients (Name, PumpNumber) VALUES ('7up', 3);
+INSERT INTO ingredients (Name, PumpNumber) VALUES ('Jus de raisin', 4);
+INSERT INTO ingredients (Name) VALUES ('Redbull');
 
-INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (1, 1, 1);
-INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (1, 5, 1);
-INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (1, 2, 2);
+INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (1, 1, 2);
+INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (1, 2, 4);
 
-INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (2, 2, 1);
-INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (2, 4, 3);
-INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (2, 3, 4);
+INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (2, 1, 1);
+INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (2, 3, 5);
+
+INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (3, 4, 6);
 
 INSERT INTO mobileNodes (Name, IpAddress) VALUES ('Noeud Mobile 1','127.0.0.1');
+
+alter table ingredients
+add Constraint test Unique (PumpNumber)
