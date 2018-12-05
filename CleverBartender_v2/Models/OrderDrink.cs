@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CleverBartender_v2.Models
+namespace CleverBartender.Models
 {
     public class OrderDrink
     {

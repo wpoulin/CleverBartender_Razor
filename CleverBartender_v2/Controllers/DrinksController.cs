@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using CleverBartender_v2.Models;
+using CleverBartender.Models;
 using System.Text;
 
-namespace CleverBartender_v2.Controllers
+namespace CleverBartender.Controllers
 {
     public class DrinksController : Controller
     {

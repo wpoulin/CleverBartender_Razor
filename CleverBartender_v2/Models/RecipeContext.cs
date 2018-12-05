@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace CleverBartender_v2.Models
+namespace CleverBartender.Models
 {
     public class RecipeContext : DbContext
     {

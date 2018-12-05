@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Sockets;
 
-namespace CleverBartender_v2.Models
+namespace CleverBartender.Models
 {
     public class Drink
     {

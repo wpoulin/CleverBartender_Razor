@@ -41,7 +41,6 @@ INSERT INTO ingredients (Name, PumpNumber) VALUES ('Rhum', 1);
 INSERT INTO ingredients (Name, PumpNumber) VALUES ('Coke', 2);
 INSERT INTO ingredients (Name, PumpNumber) VALUES ('7up', 3);
 INSERT INTO ingredients (Name, PumpNumber) VALUES ('Jus de raisin', 4);
-INSERT INTO ingredients (Name) VALUES ('Redbull');
 
 INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (1, 1, 2);
 INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (1, 2, 4);

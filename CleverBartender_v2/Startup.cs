@@ -1,5 +1,5 @@
 ﻿
-using CleverBartender_v2.Models;
+using CleverBartender.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -12,7 +12,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
-namespace CleverBartender_v2
+namespace CleverBartender
 {
     public class Startup
     {

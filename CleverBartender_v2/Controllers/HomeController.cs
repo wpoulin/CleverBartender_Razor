@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using CleverBartender_v2.Models;
+using CleverBartender.Models;
 
-namespace CleverBartender_v2.Controllers
+namespace CleverBartender.Controllers
 {
     public class HomeController : Controller
     {

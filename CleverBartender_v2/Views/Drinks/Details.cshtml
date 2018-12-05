@@ -1,4 +1,4 @@
-﻿@model CleverBartender_v2.Models.Drink
+﻿@model CleverBartender.Models.Drink
 
 @{
     ViewData["Title"] = "Details";
@@ -32,5 +32,6 @@
 
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Order" asp-route-id="@Model.Id">Order</a> |
     <a asp-action="Index">Back to List</a>
 </div>
