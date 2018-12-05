@@ -33,7 +33,6 @@ namespace CleverBartender_v2.Controllers
 
             ViewBag.DeviceType = items;
 
-
             ViewData["test"] = GlobalVariables.socketStarted;
 
             return View(await _context.Drinks.ToListAsync());
@@ -68,16 +67,12 @@ namespace CleverBartender_v2.Controllers
                 iteration++;
             }
 
-
             ViewData["recipe"] = OrderList;
 
             if (drink == null)
             {
                 return NotFound();
             }
-
-            SocketBuildMessage(OrderList,1);
-            //SocketSendData();
 
             return View(drink);
         }
@@ -183,6 +178,57 @@ namespace CleverBartender_v2.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+
+
+
+
+
+        // GET: Drinks/Order/5
+        public async Task<IActionResult> Order(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var drink = await _context.Drinks.FirstOrDefaultAsync(m => m.Id == id);
+            var recipe = await _context.Recipes.Where(t => t.DrinkId == id).ToListAsync();
+            var recipeIdList = recipe.Select(c => c.IngredientId).ToList();
+
+            List<OrderDrink> OrderList = new List<OrderDrink>();
+            int iteration = 0;
+
+            foreach (int ids in recipeIdList)
+            {
+                var orderDrink = new OrderDrink();
+                var ingredient = _context.Ingredients.Where(e => e.Id == ids);
+                orderDrink.Name = ingredient.First().Name;
+                orderDrink.PumpNumber = ingredient.First().PumpNumber;
+
+                var quantity = recipe.Skip(iteration).Take(1);
+                orderDrink.Quantity = quantity.First().Quantity;
+
+                OrderList.Add(orderDrink);
+                iteration++;
+            }
+
+            if (drink == null)
+            {
+                return NotFound();
+            }
+
+            //SocketBuildMessage(OrderList, 1);
+            //SocketSendData();
+
+            return RedirectToAction("Index", "Drinks");
+        }
+
+
+
+
+
+
 
         private bool DrinkExists(int id)
         {

@@ -1,3 +1,5 @@
+DROP DATABASE clever_bartender;
+
 CREATE DATABASE clever_bartender;
 USE clever_bartender;
 

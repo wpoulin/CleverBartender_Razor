@@ -68,7 +68,7 @@ namespace CleverBartender_v2
             });
 
             GlobalVariables.MyGlobalString = "test123";
-            SetupSocket();
+            //SetupSocket();
 
         }
 
