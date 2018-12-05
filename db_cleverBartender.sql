@@ -35,20 +35,38 @@ CREATE TABLE mobileNodes (
 
 INSERT INTO drinks (Name) VALUES ('Rhum n coke');
 INSERT INTO drinks (Name) VALUES ('Rhum n 7up');
+INSERT INTO drinks (Name) VALUES ('All-in');
 INSERT INTO drinks (Name) VALUES ('Jus de raisin');
+INSERT INTO drinks (Name) VALUES ('Coke');
+INSERT INTO drinks (Name) VALUES ('7up');
 
 INSERT INTO ingredients (Name, PumpNumber) VALUES ('Rhum', 1);
 INSERT INTO ingredients (Name, PumpNumber) VALUES ('Coke', 2);
 INSERT INTO ingredients (Name, PumpNumber) VALUES ('7up', 3);
 INSERT INTO ingredients (Name, PumpNumber) VALUES ('Jus de raisin', 4);
 
+/*Rhum n coke*/
 INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (1, 1, 2);
 INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (1, 2, 4);
 
-INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (2, 1, 1);
+/*Rhum n 7up*/
+INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (2, 1, 2);
 INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (2, 3, 5);
 
-INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (3, 4, 6);
+/*All-in*/
+INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (3, 1, 2);
+INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (3, 2, 2);
+INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (3, 3, 2);
+INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (3, 4, 2);
+
+/*Jus de raisin*/
+INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (4, 4, 10);
+
+/*Coke*/
+INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (5, 2, 6);
+
+/*7up*/
+INSERT INTO recipes (DrinkId, IngredientId, Quantity) VALUES (6, 3, 8);
 
 INSERT INTO mobileNodes (Name, IpAddress) VALUES ('Noeud Mobile 1','127.0.0.1');
 
